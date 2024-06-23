@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Navbar from "./Navbar"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../features/cartSlice"
 
 const Products = () => {
   const [products, setProducts] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     async function fetchProducts() {
@@ -22,7 +25,7 @@ const Products = () => {
           <img src={product.image} alt="" />
           <h4>{product.title}</h4>
           <h5>${product.price}</h5>
-          <button onClick={() => { }} className="btn">
+          <button onClick={() => { dispatch(addToCart(product)) }} className="btn">
             Add to cart
           </button>
         </div>

@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
 
 const Navbar = () => {
+  const cartItems = useSelector((state) => state.cart)
+
   return (
     <>
       <div
@@ -26,7 +29,7 @@ const Navbar = () => {
           <Link className="navLink" to="/cart">
             Cart
           </Link>
-          <span className="cartCount">Cart items: 0</span>
+          <span className="cartCount">Cart items: { cartItems.length }</span>
         </div>
       </div>
       {Outlet}
