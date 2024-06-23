@@ -1,9 +1,14 @@
+import { Link } from "react-router-dom"
+import Navbar from "./components/Navbar"
+
 function App() {
   return (
-    <div>
-      <h1>Redux toolkit</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dolorem ad culpa tenetur vitae numquam necessitatibus reprehenderit molestiae ducimus consectetur.</p>
-    </div>
+    <>
+      <Navbar />
+      <h1>Welcome to my store</h1>
+      <Link to={'/products'} > Products</Link>
+      <Link to={'/cart'} > Cart</Link>
+    </>
   )
 }
 
