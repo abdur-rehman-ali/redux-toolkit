@@ -5,12 +5,11 @@ import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
-  createRoutesFromElements,
-  Route
 } from "react-router-dom";
 import Products from './components/Products.jsx';
-import Navbar from './components/Navbar.jsx';
 import Cart from './components/Cart.jsx';
+import { Provider } from 'react-redux'
+import { store } from './store/store.js';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +29,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )

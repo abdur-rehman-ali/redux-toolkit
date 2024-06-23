@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Navbar from './Navbar'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeFromCart } from '../features/cartSlice'
 
 const Cart = () => {
-  const [products, setProducts] = useState([])
-
-  useEffect(() => {
-    async function fetchProducts() {
-      const { data } = await axios.get('https://fakestoreapi.com/products')
-      setProducts(data)
-    }
-    fetchProducts()
-  }, [])
-
+  const products = useSelector(state => state.cart)
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -26,7 +19,7 @@ const Cart = () => {
             <h5>{product.price}</h5>
             <button
               className="btn"
-              onClick={() => {}}
+              onClick={() => { dispatch(removeFromCart(product.id)) }}
             >
               Remove
             </button>
